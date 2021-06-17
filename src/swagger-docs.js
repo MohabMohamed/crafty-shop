@@ -11,7 +11,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ['./docs/**/*.yaml']
+  apis: ['./src/docs/**/*.yaml']
 }
 
 const swaggerSpec = swaggerJSDoc(options)

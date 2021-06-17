@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "env-cmd ./config/test.env jest --watch --runInBand"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
   },
   "author": "Mohab Abd El-Dayem <mohab.m.mohamed@gmail.com>",
   "license": "ISC",
