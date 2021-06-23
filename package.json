@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
-    "test": "env-cmd -f ./config/test.env jest --runInBand",
-    "test:watch": "env-cmd -f ./config/test.env jest --watch --runInBand",
+    "dev": "nodemon src/index.js",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch --runInBand",
     "format": "prettier-standard 'src/**/*.js'",
-    "prepare": "husky install"
+    "prepare:dev": "husky install"
   },
   "author": "Mohab Abd El-Dayem <mohab.m.mohamed@gmail.com>",
   "license": "ISC",
@@ -20,7 +20,6 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^9.4.3",

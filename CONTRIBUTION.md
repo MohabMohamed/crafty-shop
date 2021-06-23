@@ -20,14 +20,16 @@ The goal of this file is to make contributing to this project as easy and transp
 
 - Install [Nodejs](https://nodejs.org)
 
-- Run `npm install`
+- Install [Docker](https://docs.docker.com/install/)
+
+- Install [Docker compose](https://docs.docker.com/compose/install/)
 
 - Run `cp config/example.env config/dev.env`
+   
+- Run `cp config/example.env config/prod.env`
   
 - Run `cp config/example.env config/test.env`
   
-- Change `config/test.env` and `config/dev.env` to have your enviroment variables
+- Change `config/test.env` , `config/dev.env` and `config/prod.env` to have your environment variables
 
-- Run `npm run prepare`
-  
-- Run `npm run dev`
+- Run `docker-compose -f docker-compose.dev.yml up`
