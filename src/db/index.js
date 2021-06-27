@@ -10,8 +10,8 @@ Object.keys(models).forEach(model => {
 
 const DB = {
   models,
-  initDB: function () {
-    sequelize.sync()
+  initDB: async function () {
+    await sequelize.sync()
   }
 }
 

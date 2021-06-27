@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest --runInBand",
-    "test:watch": "jest --watch --runInBand",
+    "test": "env-cmd -f ./config/test.env jest --runInBand",
+    "test:watch": "env-cmd -f ./config/test.env jest --watch --runInBand",
     "format": "prettier-standard 'src/**/*.js'",
     "prepare:dev": "husky install"
   },
@@ -23,6 +23,7 @@
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^9.4.3",

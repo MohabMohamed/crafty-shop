@@ -4,7 +4,12 @@ const healthRouter = require('./routers/health')
 const db = require('./db/index')
 const app = express()
 
-db.initDB()
+const DBInitlizer = async function () {
+  if (process.env.NODE_ENV !== 'test') {
+    await db.initDB()
+  }
+}
+DBInitlizer()
 
 if (process.env.NODE_ENV === 'dev') {
   const swaggerUi = require('swagger-ui-express')
