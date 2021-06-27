@@ -1,8 +1,10 @@
 const express = require('express')
 const helmet = require('helmet')
 const healthRouter = require('./routers/health')
-
+const db = require('./db/index')
 const app = express()
+
+db.initDB()
 
 if (process.env.NODE_ENV === 'dev') {
   const swaggerUi = require('swagger-ui-express')

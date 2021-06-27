@@ -14,11 +14,12 @@ services:
         - ./:/app
   postgres:
     image: postgres:13.3-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+    env_file:
+      -  ./config/dev.env
+    expose: 
+      - '3587'
     ports: 
-      - '2345:5432'
+      - '3587:5432'
     volumes:
       - ~/pg_data/crafty_shop_dev:/var/lib/postgresql/data
     

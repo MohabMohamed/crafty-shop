@@ -15,11 +15,10 @@ services:
       restart: always
   postgres:
     image: postgres:13.3-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+    env_file:
+      - ./config/prod.env
     ports: 
-      - '2345:5432'
+      - '5432:5432'
     volumes:
       - ~/pg_data/crafty_shop_prod:/var/lib/postgresql/data
     
