@@ -27,3 +27,5 @@ UserType.associate = models => {
     onDelete: 'SET NULL'
   })
 }
+
+module.exports = UserType
