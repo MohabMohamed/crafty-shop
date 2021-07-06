@@ -31,6 +31,13 @@ Cart.associate = models => {
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })
+
+  Cart.hasMany(models.CartItem, {
+    foreignKey: 'cartId',
+    as: 'cartItem',
+    onUpdate: 'cascade',
+    onDelete: 'cascade'
+  })
 }
 
 module.exports = Cart
