@@ -27,7 +27,7 @@ const Order = sequelize.define(
 Order.associate = models => {
   Order.belongsTo(models.User, {
     foreignKey: 'userId',
-    as: 'order',
+    as: 'user',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })

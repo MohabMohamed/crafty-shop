@@ -26,7 +26,7 @@ const ProductCategory = sequelize.define(
 ProductCategory.associate = models => {
   ProductCategory.hasMany(models.Product, {
     foreignKey: 'productCategoryId',
-    as: 'productCategory',
+    as: 'product',
     onUpdate: 'cascade',
     onDelete: 'SET NULL'
   })

@@ -26,7 +26,7 @@ const RefreshToken = sequelize.define(
 RefreshToken.associate = models => {
   RefreshToken.belongsTo(models.User, {
     foreignKey: 'userId',
-    as: 'refreshToken',
+    as: 'user',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })

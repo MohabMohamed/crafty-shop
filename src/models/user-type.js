@@ -21,7 +21,7 @@ const UserType = sequelize.define(
 
 UserType.associate = models => {
   UserType.hasMany(models.User, {
-    foreignKey: 'userType',
+    foreignKey: 'user',
     as: 'userType',
     onUpdate: 'cascade',
     onDelete: 'SET NULL'

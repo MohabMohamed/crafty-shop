@@ -27,7 +27,7 @@ const Seller = sequelize.define(
 Seller.associate = models => {
   Seller.belongsTo(models.User, {
     foreignKey: 'userId',
-    as: 'seller',
+    as: 'user',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })

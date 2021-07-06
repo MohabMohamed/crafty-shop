@@ -27,7 +27,7 @@ const Cart = sequelize.define(
 Cart.associate = models => {
   Cart.belongsTo(models.User, {
     foreignKey: 'userId',
-    as: 'cart',
+    as: 'user',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })

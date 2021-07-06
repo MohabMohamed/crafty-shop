@@ -37,7 +37,7 @@ const UserAddress = sequelize.define(
 UserAddress.associate = models => {
   UserAddress.belongsTo(models.User, {
     foreignKey: 'userId',
-    as: 'userAddress',
+    as: 'user',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })

@@ -27,7 +27,7 @@ const ProductImage = sequelize.define(
 ProductImage.associate = models => {
   ProductImage.belongsTo(models.Product, {
     foreignKey: 'productId',
-    as: 'productImage',
+    as: 'product',
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })
