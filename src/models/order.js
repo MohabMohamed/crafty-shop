@@ -31,6 +31,13 @@ Order.associate = models => {
     onUpdate: 'cascade',
     onDelete: 'cascade'
   })
+
+  Order.hasMany(models.OrderItem, {
+    foreignKey: 'orderId',
+    as: 'orderItem',
+    onUpdate: 'cascade',
+    onDelete: 'cascade'
+  })
 }
 
 module.exports = Order
