@@ -30,7 +30,7 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false
     },
-    userType: {
+    userTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -117,7 +117,7 @@ User.associate = models => {
   })
 
   User.belongsTo(models.UserType, {
-    foreignKey: 'userType',
+    foreignKey: 'userTypeId',
     as: 'userType',
     onUpdate: 'cascade',
     onDelete: 'SET NULL'

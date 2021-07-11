@@ -86,8 +86,9 @@ Product.associate = models => {
   Product.belongsTo(models.ProductDiscount, {
     foreignKey: 'discountId',
     as: 'productDiscount',
-    onUpdate: 'cascade',
-    onDelete: 'SET NULL'
+    constraints: false,
+    allowNull: true,
+    defaultValue: null
   })
 
   Product.hasMany(models.ProductImage, {
