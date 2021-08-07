@@ -23,6 +23,17 @@ const RefreshToken = sequelize.define(
   }
 )
 
+RefreshToken.getUserByToken = async (refreshTokenId, refreshToken) => {
+  const matchedRefreshToken = await RefreshToken.findOne({
+    where: {
+      id: parseInt(refreshTokenId),
+      token: refreshToken
+    },
+    include: 'user'
+  })
+  return { user: matchedRefreshToken.user, matchedRefreshToken }
+}
+
 RefreshToken.associate = models => {
   RefreshToken.belongsTo(models.User, {
     foreignKey: 'userId',
