@@ -22,6 +22,7 @@ const DB = {
   models,
   initDB: async function () {
     await sequelize.sync()
+    await models.UserType.initialize()
   }
 }
 
