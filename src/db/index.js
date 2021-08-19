@@ -19,6 +19,7 @@ Object.keys(models).forEach(modelName => {
 })
 
 const DB = {
+  sequelize,
   models,
   initDB: async function () {
     await sequelize.sync()

@@ -27,5 +27,13 @@ UserType.associate = models => {
     onDelete: 'SET NULL'
   })
 }
+UserType.initialize = async () => {
+  const data = [
+    { id: 1, type: 'regular' },
+    { id: 2, type: 'seller' },
+    { id: 3, type: 'admin' }
+  ]
+  await UserType.bulkCreate(data, { ignoreDuplicates: true })
+}
 
 module.exports = UserType

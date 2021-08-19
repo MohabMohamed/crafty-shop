@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "helmet": "^4.6.0",
@@ -24,6 +25,7 @@
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
+    "cookiejar": "^2.1.2",
     "env-cmd": "^10.1.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",

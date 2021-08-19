@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken')
 
-const sign = (payload, expiresIn) => {
-  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn })
+const sign = (payload, secret, expiresIn) => {
+  return jwt.sign(payload, secret, { expiresIn })
 }
 
-const verify = token => {
+const verify = (token, secret) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, secret)
     return { payload: decoded, expired: false }
   } catch (e) {
     if (e.message === 'jwt expired') return { payload: null, expired: true }

@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const sequelize = require('../db/db')
+const jwt = require('../util/jwt')
+const userError = require('../errors/user')
 
 const User = sequelize.define(
   'User',
@@ -32,7 +34,8 @@ const User = sequelize.define(
     },
     userTypeId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 1
     },
     phoneNumber: {
       type: DataTypes.STRING(15),
@@ -69,16 +72,69 @@ User.findByCredentials = async (email, password) => {
   })
 
   if (!user) {
-    throw new Error('Unable to login')
+    throw userError.UnableToLogin()
   }
 
   const isMatch = await bcrypt.compare(password, user.password)
 
   if (!isMatch) {
-    throw new Error('Unable to login')
+    throw userError.UnableToLogin()
   }
 
   return user
+}
+
+User.prototype.toJSON = function () {
+  const newUser = Object.assign({}, this.dataValues)
+
+  if (newUser.password) {
+    delete newUser.password
+  }
+
+  if (newUser.refreshToken) {
+    delete newUser.refreshToken
+  }
+
+  return newUser
+}
+
+User.generateJWTToken = async function (user, secret, duration) {
+  const newUser = {}
+  const onlyValidFields = ['firstName', 'lastName', 'email', 'phoneNumber']
+  onlyValidFields.forEach(key => {
+    if (user[key]) newUser[key] = user[key]
+  })
+
+  return jwt.sign(newUser, secret, duration)
+}
+
+User.register = async (user, userAddress) => {
+  const matchedUser = await User.findOne({
+    where: {
+      email: user.email
+    }
+  })
+
+  if (matchedUser) {
+    throw userError.existingEmail()
+  }
+
+  const refreshToken = await User.generateJWTToken(
+    user,
+    process.env.REFRESH_JWT_SECRET,
+    Number(process.env.REFRESH_TOKEN_LIFE_SPAN)
+  )
+
+  return User.create(
+    {
+      ...user,
+      userAddress,
+      refreshToken: { token: refreshToken }
+    },
+    {
+      include: ['userAddress', 'refreshToken']
+    }
+  )
 }
 
 User.associate = models => {

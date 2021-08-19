@@ -34,14 +34,14 @@ const auth = async (req, res, next) => {
 
     const newAccessToken = jwt.sign(
       { email: user.email, firstName: user.firstName, lastName: user.lastName },
-      process.env.JWT_SECRET,
-      { expiresIn: '2m' }
+      process.env.ACCESS_JWT_SECRET,
+      { expiresIn: Number(process.env.ACCESS_TOKEN_LIFE_SPAN) }
     )
 
     req.accessToken = newAccessToken
     req.user = user
     res.cookie('accessToken', newAccessToken, {
-      maxAge: 120000, // 2 minutes
+      maxAge: Number(process.env.ACCESS_TOKEN_LIFE_SPAN),
       httpOnly: true
     })
     return next()

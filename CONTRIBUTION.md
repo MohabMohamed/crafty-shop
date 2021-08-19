@@ -5,14 +5,16 @@ The goal of this file is to make contributing to this project as easy and transp
 ---
 
 ## Pull requests
- - Clone the repo and create your branch from master with `feature/name` or `issue/name`.
- - If you've added code that should be tested, add tests.
- - If you've changed APIs, update the documentation.
+
+- Clone the repo and create your branch from master with `feature/name` or `issue/name`.
+- If you've added code that should be tested, add tests.
+- If you've changed APIs, update the documentation.
 
 ## Coding Style
- - Don't overwrite any of the pre-commits
- - I use standard coding rules, so please check that your code follows it
- - Test everything
+
+- Don't overwrite any of the pre-commits
+- I use standard coding rules, so please check that your code follows it
+- Test everything
 
 ## Setting up
 
@@ -25,11 +27,13 @@ The goal of this file is to make contributing to this project as easy and transp
 - Install [Docker compose](https://docs.docker.com/compose/install/)
 
 - Run `cp config/example.env config/dev.env`
-   
+
 - Run `cp config/example.env config/prod.env`
   
 - Run `cp config/example.env config/test.env`
   
 - Change `config/test.env` , `config/dev.env` and `config/prod.env` to have your environment variables
+  
+- Run `npm run prepare:dev` to enable git pre-commits
 
 - Run `docker-compose -f docker-compose.dev.yml up`
